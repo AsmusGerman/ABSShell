@@ -1,0 +1,3 @@
+[target]
+programs=MiShell
+units=MiUtils MacroUtils MiArchivo TDALista MiTypes MiResources

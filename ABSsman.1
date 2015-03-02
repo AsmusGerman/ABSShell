@@ -1,0 +1,212 @@
+.TH ABSShell 1
+.SH NAME
+ABSShell - Asmus Bouvier Segovia Shell
+.SH SYNOPSIS
+.B ABSShell
+.SH DESCRIPTION
+ABSShell es un intérprete primitivo de lenguaje de comandos que ejecuta órdenes leídas de la entrada estándar.
+.br
+ABSShell tambien incorpora algunos comandos del shell BASH como comandos internos, entre ellos cd, jobs, pwd, kill, ls y cat.
+.br
+ABSShell es un shell experimental creado para el Trabajo Final 2014 "Ampliación y mejora del shell experimental" de la materia
+Sistemas Operativos de FRCU - UTN.
+.br
+ABSShell es una ampliacion y mejora del shell experimental GSTShell, en el cual se basa. Este puede obtenerse de forma libre en el siguiente enlace: https://code.google.com/p/gst-shell/. Tanto ABSShell como GSTShell pueden ser obtenidos, utilizados, editados, y distribuidos bajo la licencia GNU GENERAL PUBLIC LICENSE v3.0.
+.SH PARAMETERS
+.B
+Variables
+.B
+usuarioActual
+.br
+Mantiene el nombre del usuario actual en que se encuentra
+.br
+trabajando en el equipo.
+.PP
+.B
+hostActual
+.br
+Guarda el nombre del equipo.
+.PP
+.B
+midir
+.br
+Mantiene la ruta del directorio de trabajo actual.
+.PP
+.B
+olddir
+.br
+Mantiene la ruta del directorio de trabajo anterior al
+.br
+actual.
+.PP
+.B
+home
+.br
+Mantiene la ruta del directorio Home del Sistema de Archivos.
+.PP
+.B
+homeMasUsuarioActual
+.br
+Guarda la ruta del directorio del usuario actual en el
+.br
+Sistema de Archivos.
+.SH REDIRECTION
+.B
+Redireccion de Salida estandar
+.br
+ABSShell posee dos formas para la redireccion de la salida estandar:
+.br
+[n]>arch
+.br
+Guarda la salida del comando "n" en el archivo "arch". Si el
+.br
+archivo no existe, lo crea, y si existe lo reescribe.
+.br
+[n]>>arch
+.br
+Guarda la salida del comando "n" en el archivo "arch". Si el
+.br
+archivo no existe, lo crea, y si existe lo agrega al final.
+.SH PIPE
+[n] | [m]
+.br 	 
+El comando pipe envia la salida del comando "n" como entrada al comando "m".
+.SH SHELL BUILTIN COMMANDS
+.B
+mils opcion [ruta]
+.br
+Lista en pantalla los archivos del directorio especificado
+.br
+en [ruta] (esta ruta puede ser absoluta o relativa)
+.br
+con el formato que se especifique en "opcion".
+.br
+Si no se le pasa el parametro [ruta], se listaran los
+.br
+archivos existentes en el directorio actual.
+.br
+Si el formato que se indica en "opcion" es igual a '-l',
+.br
+se listaran los archivos en formato largo (permisos, grupo,
+.br
+tamaño, ultima fecha de modificacion, nombre) y con color
+.br
+(segun el tipo de archivo). Lista ordenado y no muestra
+.br
+archivos ocultos.
+.br
+Si el formato que se indica en "opcion" es igual a '-a',
+.br
+se listaran los nombres de los archivos y con color.
+.br
+Lista ordenado y muestra archivos ocultos.
+.br
+Si el formato que se indica en "opcion" es igual a -fR',
+.br
+se listaran los nombres de los archivos.
+.br
+Lista sin orden y archivos ocultos.
+.PP
+.B
+mipwd
+.br
+Muestra en pantalla la ruta del directorio actual de trabajo.
+.PP
+.B
+micd [r]
+.br
+Cambia el directorio de trabajo actual dependiendo del valor
+.br
+de "r".
+.br
+Si "r" es una ruta absoluta o relativa cambia el directorio
+.br
+actual a esta ruta (si es relativa toma como base la ruta
+.br
+del directorio actual).
+.br
+Si "r" es igual a '.' mantiene el directorio actual.
+.br
+Si "r" es igual a '..' cambia el directorio actual al
+.br
+directorio padre del directorio actual.
+.br
+Si "r" es igual a '-' cambia el directorio actual al
+.br
+directorio de trabajo anterior.
+.br
+Si "r" es igual a '~' cambia el directorio actual
+.br
+al directorio HOME.
+.PP
+.B
+mikill pid señal
+.br
+Envia "señal" al proceso de pid "pid". Ambos parametros
+.br
+deben ser numericos.
+.br
+ABSShell cuenta con un manejo personalizado de las
+.br
+señales 9 (terminar proceso) y 19 (detener proceso).
+.PP
+.B
+micat [archivo1] [archivo2]
+.br
+Concatena "archivo1" con "archivo2" y los muestra en
+.br
+pantalla.
+.br
+Si solo se le pasa un archivo, concatena su contenido
+.br
+con la salida estandar.
+.br
+Si no se le pasa ningun archivo, lee de la entrada
+.br
+estandar y muestra lo leido.
+.PP
+.B
+mibg pid
+.br
+Continua ejecutando el proceso de pid "pid" en segundo plano.
+.PP
+.B
+mifg pid
+.br
+Continua ejecutando el proceso de pid "pid" en primer plano.
+.PP
+.B
+mijobs
+.br
+Muestra los procesos activos ejecutados por el shell, ya sea
+.br
+que esten en ejecucion, detenidos, en primer o segundo plano.
+.SH SHELL EXTRA KEYS
+.B
+ABSShell cuenta con teclas de funcion
+.br
+La combinacion de teclas CTRL+I, permite continuar, en
+.br
+segundo plano, con la ejecucion de un proceso.
+.br
+La combinacion de teclas CTRL+C, permite finalizar un proceso.
+.br
+La combinacion de teclas CTRL+X, permite detener un proceso.
+.br
+La combinacion de teclas CTRL+ABAJO, permite detener el proceso
+.br
+actual y pasar a la ejecucion del siguiente.
+.br
+La combinacion de teclas CTRL+ARRIBA, permite detener el proceso
+.br
+actual y pasar a la ejecucion del anterior.
+.SH COPYRIGHT
+Copyright  ©  2012  Free Software Foundation, Inc.  License GPLv3+: GNU
+.SH SEE ALSO
+GSTShell https://code.google.com/p/gst-shell/
+.SH AUTHORS
+Asmus German - electronik.32@gmail.com
+.br
+Bouvier Estefani Daian - estefani.bouvier@yahoo.com.ar
+.br
+Segovia Alejandro Fabian - alesegovia07@gmail.com

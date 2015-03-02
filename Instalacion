@@ -1,0 +1,38 @@
+Instrucciones de instalación
+
+
+1) Abra una terminal y ejecute los siguientes comandos:
+
+	cd
+
+	git clone https://github.com/GermanAsmus/ABSShell.git
+
+		(Nota: Si no tiene instalado el git ejecute en la terminal los 	siguientes comandos y luego ejecute los pasos anteriores.	
+
+		cd
+
+		sudo apt-get install git)
+
+	cd ABSShell
+
+	(Si su procesador necesita la version X86_64 ejecute)
+
+	export FPCDIR=/usr/lib/fpc/(FPC_VERSION)
+
+	(Ademas verifique su version de Free Pascal con el comando fpc -iV)
+
+	fpcmake makefile.fpc
+
+	make
+
+2) Para generar el manual ejecute 
+	
+	sudo cp ABSsman.1 /usr/share/man/es/man1/
+
+3) En la misma terminal, sin moverse de carpeta ABSShell, ejecute 
+
+	./MiShell
+
+4) Para ver el manual 
+
+	man ABSsman
